@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Vennilavan12/Trend.git'
+                git 'https://github.com/ravneet12345/trendapp.git'
             }
         }
 
