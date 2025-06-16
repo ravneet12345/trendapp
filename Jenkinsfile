@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS_PSW = "dckr_pat_FiuoMw1ZNQcbSYA0q_2ZSvWk4Xs"
+        DOCKERHUB_CREDENTIALS_PSW = "dckr_pat_tVbAbr79-KEqsLo5C_6SBmIIGDg"
         DOCKERHUB_CREDENTIALS_USR = "ravneeth123"
         
         IMAGE_NAME = "ravneet123/trend-app"
