@@ -9,11 +9,7 @@ pipeline {
     }
 
     stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/ravneet12345/trendapp.git'
-            }
-        }
+        
 
         stage('Build Docker Image') {
             steps {
