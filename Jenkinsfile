@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     IMAGE_NAME = "ravneeth123/trend-react-app"
-    IMAGE_TAG = "v${BUILD_NUMBER}"
+    IMAGE_TAG = "latest"
     AWS_REGION = "us-east-1"
     EKS_CLUSTER = "trend-apps-cluster"
   }
@@ -41,7 +41,6 @@ pipeline {
     stage('Kubernetes Deploy') {
       steps {
         sh '''
-          sed -i "s|<IMAGE>|${IMAGE_NAME}:${IMAGE_TAG}|" deployment.yaml
           kubectl apply -f deployment.yaml
           kubectl apply -f services.yaml
         '''
