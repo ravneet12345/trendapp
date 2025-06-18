@@ -6,33 +6,60 @@ pipeline {
         DOCKERHUB_CREDENTIALS_USR = "ravneeth123"
         
         IMAGE_NAME = "ravneeth123/trend-react-app"
+        IMAGE_TAG = "v${BUILD_NUMBER}"
+        AWS_REGION = 'us-east-1'
+        EKS_CLUSTER = 'trend-apps-cluster'
     }
 
     stages {
-        
-
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t $IMAGE_NAME .'
-            }
-        }
-
-        stage('Push to DockerHub') {
-            steps {
-                sh '''
-                echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
-                docker push $IMAGE_NAME
-                '''
-              }
-        }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh '''
-                kubectl apply -f deployment.yaml
-                kubectl apply -f service.yaml
-                '''
-            }
-        }
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/Vennilavan12/Trend.git'
+      }
     }
+
+    stage('Docker Build') {
+      steps {
+        script {
+          dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+        }
+      }
+    }
+
+    stage('Docker Login & Push') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+          sh '''
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push ${IMAGE_NAME}:${IMAGE_TAG}
+          '''
+        }
+      }
+    }
+
+    stage('Configure Kubeconfig') {
+      steps {
+        sh "aws eks --region ${AWS_REGION} update-kubeconfig --name ${EKS_CLUSTER}"
+      }
+    }
+
+    stage('Kubernetes Deploy') {
+      steps {
+        sh '''
+          sed -i "s|<IMAGE>|${IMAGE_NAME}:${IMAGE_TAG}|" k8s/deployment.yaml
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+        '''
+      }
+    }
+  }
+
+  post {
+    success {
+      echo '✅ Deployment complete!'
+    }
+    failure {
+      echo '❌ Deployment failed!'
+    }
+  }
 }
