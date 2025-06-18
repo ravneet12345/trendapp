@@ -41,9 +41,9 @@ pipeline {
     stage('Kubernetes Deploy') {
       steps {
         sh '''
-          sed -i "s|<IMAGE>|${IMAGE_NAME}:${IMAGE_TAG}|" k8s/deployment.yaml
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          sed -i "s|<IMAGE>|${IMAGE_NAME}:${IMAGE_TAG}|" deployment.yaml
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
         '''
       }
     }
