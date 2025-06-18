@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: trend-app
-        image: docker push ravneeth123/trend-react-app
+        image: ravneeth123/trend-react-app:latest
         ports:
         - containerPort: 80
