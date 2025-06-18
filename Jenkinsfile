@@ -11,14 +11,21 @@ pipeline {
         EKS_CLUSTER = 'trend-apps-cluster'
     }
 
-    stages {
-        stage('Docker Build') {
-          steps {
-            script {
-              dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
-            }
-          }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git url: 'https://github.com/ravneet12345/trendapp.git'
+      }
+    }
+
+    stage('Docker Build') {
+      steps {
+        script {
+          dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
         }
+      }
+    }
 
     stage('Docker Login & Push') {
       steps {
