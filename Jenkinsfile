@@ -13,12 +13,6 @@ pipeline {
 
 
   stages {
-    stage('Checkout') {
-      steps {
-        git url: 'https://github.com/ravneet12345/trendapp.git'
-      }
-    }
-
     stage('Docker Build') {
       steps {
         script {
