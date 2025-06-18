@@ -1,16 +1,12 @@
 pipeline {
-    agent any
+  agent any
 
-    environment {
-        DOCKERHUB_CREDENTIALS_PSW = "dckr_pat_tVbAbr79-KEqsLo5C_6SBmIIGDg"
-        DOCKERHUB_CREDENTIALS_USR = "ravneeth123"
-        
-        IMAGE_NAME = "ravneeth123/trend-react-app"
-        IMAGE_TAG = "v${BUILD_NUMBER}"
-        AWS_REGION = 'us-east-1'
-        EKS_CLUSTER = 'trend-apps-cluster'
-    }
-
+  environment {
+    IMAGE_NAME = "ravneeth123/trend-react-app"
+    IMAGE_TAG = "v${BUILD_NUMBER}"
+    AWS_REGION = "us-east-1"
+    EKS_CLUSTER = "trend-apps-cluster"
+  }
 
   stages {
     stage('Docker Build') {
@@ -23,7 +19,11 @@ pipeline {
 
     stage('Docker Login & Push') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        withCredentials([usernamePassword(
+          credentialsId: 'dockerhub-credentials',
+          usernameVariable: 'DOCKER_USER',
+          passwordVariable: 'DOCKER_PASS'
+        )]) {
           sh '''
             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
             docker push ${IMAGE_NAME}:${IMAGE_TAG}
