@@ -12,19 +12,13 @@ pipeline {
     }
 
     stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/Vennilavan12/Trend.git'
-      }
-    }
-
-    stage('Docker Build') {
-      steps {
-        script {
-          dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+        stage('Docker Build') {
+          steps {
+            script {
+              dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+            }
+          }
         }
-      }
-    }
 
     stage('Docker Login & Push') {
       steps {
