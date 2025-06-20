@@ -43,6 +43,7 @@ pipeline {
         sh '''
           kubectl apply -f deployment.yaml
           kubectl apply -f services.yaml
+          kubectl apply -f monitoring.yml
         '''
       }
     }
