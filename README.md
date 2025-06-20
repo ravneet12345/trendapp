@@ -123,9 +123,8 @@ helm install prometheus prometheus-community/prometheus
 ```
 ## 🌐 Access Application
 ```bash
-kubectl get svc
+Loadbalancer endpoint : http://aea0cdeeeb5c34d1baac34edf06ee5e5-607396639.us-east-1.elb.amazonaws.com/
 ```
-Use the EXTERNAL-IP of the service to access the app.
 ## 📸 Screenshots
 - Jenkins job setup
 - DockerHub pushed image
