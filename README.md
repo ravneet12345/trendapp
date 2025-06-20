@@ -135,12 +135,12 @@ Use the EXTERNAL-IP of the service to access the app.
 - [x] GitHub: https://github.com/ravneet12345/trendapp
 - [x] DockerHub: https://hub.docker.com/r/ravneeth123/trend-react-app
 - [x] Jenkinsfile and Terraform included
-- [x] K8s LoadBalancer IP: *(paste here)*
+- [x] LoadBalancer: http://aea0cdeeeb5c34d1baac34edf06ee5e5-607396639.us-east-1.elb.amazonaws.com/
 ## 📸 Screenshots
 
 ### ✅ Jenkins Pipeline
-![Jenkins Pipeline](screenshots/jenkins-pipeline.png)
-![Jenkins Pipeline](screenshots/jenkins-pipeline2.png)
+![Jenkins Pipeline](screenshots/Jenkins1.png)
+![Jenkins Pipeline](screenshots/Jenkins2.png)
 
 ### 🐳 DockerHub Image
 ![DockerHub Image](screenshots/dockerhub-image.png)
