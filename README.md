@@ -143,7 +143,7 @@ Use the EXTERNAL-IP of the service to access the app.
 ![Jenkins Pipeline](screenshots/Jenkins2.png)
 
 ### 🐳 DockerHub Image
-![DockerHub Image](screenshots/dockerhub-image.png)
+![DockerHub Image](screenshots/dockerhugimage.png)
 
 ### ☸️ EKS Services & Pods
 ![EKS Services](screenshots/EKS.png)
