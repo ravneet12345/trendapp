@@ -146,7 +146,9 @@ Use the EXTERNAL-IP of the service to access the app.
 ![DockerHub Image](screenshots/dockerhub-image.png)
 
 ### ☸️ EKS Services & Pods
-![EKS Services](screenshots/eks-services.png)
+![EKS Services](screenshots/EKS.png)
 
 ### 🌐 Application UI
-![Application UI](screenshots/app-ui.png)
+![Application UI](screenshots/trendsUI.png)
+### 🌐 Monitoring
+![Monitoring](screenshots/trendsUI.png)
