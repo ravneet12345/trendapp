@@ -151,4 +151,6 @@ Use the EXTERNAL-IP of the service to access the app.
 ### 🌐 Application UI
 ![Application UI](screenshots/trendsUI.png)
 ### 🌐 Monitoring
-![Monitoring](screenshots/trendsUI.png)
+![Monitoring](screenshots/monitoringservice.png)
+![Monitoring](screenshots/cluster.png)
+![Monitoring](screenshots/pods.png)
