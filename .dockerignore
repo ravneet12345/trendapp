@@ -1,0 +1,28 @@
+# Node dependencies
+node_modules/
+dist/
+
+# Git-related
+.git
+.gitignore
+
+# Environment files
+.env
+
+# Logs and swap files
+*.log
+*.swp
+
+# Terraform files (not needed in image)
+*.tf
+*.tfstate
+.terraform/
+
+# Editor settings
+.vscode/
+
+# macOS system file
+*.DS_Store
+
+# Sensitive files
+*.pem

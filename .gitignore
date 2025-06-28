@@ -1,0 +1,25 @@
+# Node dependencies
+node_modules/
+dist/
+
+# Environment files
+.env
+
+# Logs and swap files
+*.log
+*.swp
+
+# Terraform state and config
+*.tf
+*.tfstate
+.terraform/
+
+# VS Code config
+.vscode/
+
+# macOS system file
+*.DS_Store
+
+# SSH keys / credentials
+*.pem
+
